@@ -24,6 +24,22 @@ header nav a {
     margin: 0 15px;
     text-decoration: none;
 }
+
+#home {
+    text-align: center;
+    padding: 20px;
+}
+
+#home h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#home p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
  items 
  {
     display: -moz-grid-line;
@@ -32,21 +48,8 @@ header nav a {
     background: #f4f4f4;
     text-align: center;
 }
- 
 
-#product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-.product-card img {
-    max-width: 50%;
-    height: auto;
-}
-
-footer {
+#footer {
     background-color: #333;
     color: white;
     text-align: center;
@@ -56,6 +59,3 @@ footer {
     bottom: 0;
 }
 
-product-1 {
-    padding: 15px;
-}
