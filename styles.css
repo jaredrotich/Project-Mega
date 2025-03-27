@@ -10,8 +10,9 @@ body {
     color: #333;
 }
 
+
 header {
-    background-color: darkorange;
+    background-color: #e65100;
     color: white;
     padding: 25px 0;
     text-align: center;
@@ -27,5 +28,129 @@ header nav a {
     font-size: 2em;
     margin-bottom: 10px;
     text-align: center;
+     color: #28a745;
+}
 
+/*main product section*/
+#Product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+/*individual product card*/
+.Product-card {
+    flex: 1 1 22%;
+    display: grid;
+    width: 22%;
+    margin: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px ;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+
+.Product-card:hover {
+    transform: scale(1.05);
+}
+
+.Product-card .product-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+   
+}
+
+.Product-card h3 {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/*product description*/
+.Product-card .Product-description {
+font-size: 14px;
+color: #666;
+margin-bottom: 10px;
+line-height: 1.5;
+}
+
+.Product-details {
+    padding: 15px;
+}
+
+.Product-title {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+
+/*price styling */
+ .Price {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #28a745;
+}
+
+.discount {
+    color: red;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.in-stock {
+    color: green;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.pre-order {
+    color: orange;
+    font-weight: bold;
+}
+
+/*button styling */
+.add-to-cart {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8%;
+    cursor: pointer;
+   
+}
+
+.Product-card .add-to-cart:hover {
+    background-color: #218838;
+}
+
+footer {
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .Product-container {
+        flex: 1 1 48%;  /* On medium screens, display 2 products per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .Product-container {
+       flex: 1 1 100%;  /* On small screens, display 1 product per row */
+    }
 }
