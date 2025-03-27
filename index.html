@@ -11,12 +11,15 @@
             
                   
              <h1>HILTECH</h1>
+                  <br>
+                  <br>
                <nav>
             <a href="#/home">Home</a>
             <a href="#Cart">Cart</a>
-            <a href="/login">Login</a>
-               </nav>
-          </header>
+            
+                </nav>
+
+       </header>
        
         <nav>
             <ul id="menuItems">
@@ -28,7 +31,20 @@
         
 
         <main>
-
+          
+          <section id="login">
+            <h2>Login to Your Account</h2>
+            <form action="/login" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+        
+                <button type="submit">Login</button>
+            </form>
+          </section>
+            
           
             <section id="home">
               <h2>Welcome To Hiltech<br />Your best Online shopping Partner</h2>
@@ -40,6 +56,8 @@
                 Shop with us!
               </h2>
             </section>
+          
+
           
             
              

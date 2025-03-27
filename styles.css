@@ -8,6 +8,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    display: flex;
+    flex-direction: column;  /* Make body a flex container */
+    min-height: 100vh;
 }
 
 
@@ -31,6 +34,46 @@ header nav a {
      color: #28a745;
 }
 
+#login h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+     color: #28a745;
+}
+
+#login form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#login input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#login button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#login button:hover {
+    background-color: #218838;
+}
+
+
 /*main product section*/
 #Product-container {
     display: flex;
@@ -49,14 +92,14 @@ header nav a {
     background-color: white;
     padding: 20px;
     border-radius: 10px ;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s ease;
 }
 
 
 .Product-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
 }
 
 .Product-card .product-img {
@@ -67,7 +110,7 @@ header nav a {
 }
 
 .Product-card h3 {
-    font-size: 16px;
+    font-size: 1.5rem;
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
@@ -76,11 +119,11 @@ header nav a {
 
 /*product description*/
 .Product-card .Product-description {
-font-size: 14px;
-color: #666;
-margin-bottom: 10px;
-line-height: 1.5;
-}
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    }
 
 .Product-details {
     padding: 15px;
@@ -132,14 +175,21 @@ line-height: 1.5;
     background-color: #218838;
 }
 
+/*footer styling*/
 footer {
     background-color: darkgreen;
     color: white;
     text-align: center;
     padding: 1em;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
+}
+
+
+/* Ensure the footer does not overlap content in small screens */
+footer p {
+    margin: 0;
 }
 
 /* Media Queries for Responsiveness */
