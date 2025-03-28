@@ -27,6 +27,11 @@ header nav a {
     text-decoration: none;
 }
 
+/* Logo styling */
+.logo {
+   
+}
+
 #home h2 {
     font-size: 2em;
     margin-bottom: 10px;
