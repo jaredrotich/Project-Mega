@@ -27,103 +27,120 @@ const productsData = {
             "phone": "0723467198",
             "address": "Nairobi, Street, Building, 1st Floor Room C"
         },
-        
+        {
+            "id": 3,
+            "name": "Hp ProBook 440 G11 Intel Core Ultra 7 155U vPro Technology 16GB RAM 512GB SSD 14\" WUXGA Display",
+            "description": "The HP ProBook 440 G11 is a powerful and reliable business laptop, designed to meet the demands of professionals, students, and business users. With its Intel Core Ultra 7 155U processor with vPro Technology, 16GB RAM, and 512GB SSD, this laptop delivers exceptional performance, efficiency, and security. Its sleek design, sturdy build quality, and advanced features make it a great choice for modern professionals who need a balance of power, portability, and security.",
+            "price": 97999,
+            "discount": 10,
+            "stock": 20,
+            "image": "https://saruk.co.ke/_next/image?url=https%3A%2F%2Fsaruk-web-images.s3.eu-north-1.amazonaws.com%2FHp%2520ProBook%2520440%2520G11%2520Intel%2520Core%2520Ultra%25207%2520155U%2520vPro%2520Technology%252016GB%2520RAM%2520512GB%2520SSD.jpg&w=640&q=75",
+            "contact_email": "info@hiltech.co.ke",
+            "whatsapp": "0723467198",
+            "phone": "0723467198",
+            "address": "Nairobi, Street, Building, 1st Floor Room C"
+          },
+          {
+            "id": 4,
+            "name": "Lenovo IdeaPad Slim 3 14IrH8 13th Gen Intel Core i5-13420H 16GB RAM 512GB SSD 14\" FHD Display",
+            "description": "Order Lenovo IdeaPad Slim 3 14IrH8 13th Gen Intel Core i5-13420H 16GB RAM 512GB SSD 14\" FHD Display Integrated Graphics Brand New 1 Year Dealership Warranty today, and have it delivered to your doorstep within 1-3 working days or same-day delivery within Nairobi.",
+            "price": 62999,
+            "discount": 10,
+            "stock": 20,
+            "image": "https://saruk.co.ke/_next/image?url=https%3A%2F%2Fsaruk-web-images.s3.eu-north-1.amazonaws.com%2FLenovo%2520IdeaPad%2520Slim%25203%252014IrH8%252013th%2520Gen%2520Intel%2520Core%2520i5-13420H%252016GB%2520RAM%2520512GB%2520SSD%252014%2522%2520FHD%2520Display%2520Integrated%2520Graphics%2520Brand%2520New%25201%2520Year%2520Dealership%2520Warranty.jpg&w=640&q=75",
+            "contact_email": "info@hiltech.co.ke",
+            "whatsapp": "0723467198",
+            "phone": "0723467198",
+            "address": "Nairobi, Street, Building, 1st Floor Room C"
+          },
+          {
+            "id": 5,
+            "name": "Apple MacBook Air Intel Core i7 @ 2.2GHz 8GB RAM 128GB SSD 13.3\" Display",
+            "description": "Order Apple MacBook Air Intel Core i7 @ 2.2GHz 8GB RAM 128GB SSD 13.3\" Display Backlit Keyboard A1466 BTO/CTO Early 2017 Ex Uk 6 Months Warranty Grade A Silver today, and have it delivered to your doorstep within 1-3 working days or same-day delivery within Nairobi.",
+            "price": 27999,
+            "discount": 10,
+            "stock": 20,
+            "image": "https://saruk.co.ke/_next/image?url=https%3A%2F%2Fsaruk-web-images.s3.eu-north-1.amazonaws.com%2FApple%2520MacBook%2520Air%2520Intel%2520Core%2520i7%2520%2540%25202.2GHz%25208GB%2520RAM%2520256GB%2520SSD%252013.3%2522%2520Display%2520Backlit%2520Keyboard%2520A1466%2520BTO%253ACTO%2520Early%25202017%2520Ex%2520Uk%2520Grade%2520A%2520Silver.jpeg&w=640&q=75",
+            "contact_email": "info@hiltech.co.ke",
+            "whatsapp": "0723467198",
+            "phone": "0723467198",
+            "address": "Nairobi, Street, Building, 1st Floor Room C"
+          },
+          {
+            "id": 6,
+            "name": "Apple Macbook Pro 8th Gen Intel Core i5 Quad-Core 16GB RAM 256GB SSD 13.3\" Retina Display With Touch Bar Mid 2018 A1989 Ex UK",
+            "description": "Order Apple Macbook Pro 8th Gen Intel Core i5 Quad-Core 16GB RAM 256GB SSD 13.3\" Retina Display With Touch Bar Mid 2018 A1989 Ex UK 6 Months Warranty today, and have it delivered to your doorstep within 1-3 working days or same-day delivery within Nairobi.",
+            "price": 39999,
+            "discount": 10,
+            "stock": 20,
+            "image": "https://saruk.co.ke/_next/image?url=https%3A%2F%2Fsaruk-web-images.s3.eu-north-1.amazonaws.com%2FApple%2520Macbook%2520Pro%2520a1989%25208th%2520Gen%2520Intel%2520Core%2520i7-8559U%2520%2540%25202.70GHz%25208GB%2520RAM%2520256GB%2520SSD.jpg&w=640&q=75",
+            "contact_email": "info@hiltech.co.ke",
+            "whatsapp": "0723467198",
+            "phone": "0723467198",
+            "address": "Nairobi, Street, Building, 1st Floor Room C"
+          }
+        ]
 };
 
-// DOM elements
-const productContainer = document.querySelector('.Product-container');
+// Cart data (initially empty)
+let cart = [];
 
-// Function to render products dynamically
-function renderProducts(products) {
-    productContainer.innerHTML = ''; // Clear the container
+// Update cart display
+function updateCart() {
+  const cartContainer = document.getElementById('cart-container');
+  cartContainer.innerHTML = '';
 
-    products.forEach(product => {
-        // Calculate the discounted price
-        const discountedPrice = product.price - (product.price * (product.discount / 100));
-        
-        // Create product card element
-        const productCard = document.createElement('div');
-        productCard.classList.add('Product-card');
-
-        // Set the inner HTML for the product card
-        productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-img">
-            <div class="product-details" data-id="${product.id}">
-                <h3 class="Product-title">${product.name}</h3>
-                <p class="Product-description">${product.description}</p>
-                <p class="price">Ksh ${discountedPrice.toLocaleString()}</p>
-                <p class="discount">-${product.discount}%</p>
-                <p class="stock-status ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}">${product.stock > 0 ? `${product.stock} pcs` : 'Out of stock'}</p>
-                <button class="add-to-cart" ${product.stock <= 0 ? 'disabled' : ''}>Add to Cart</button>
-            </div>
-        `;
-
-        // Append the product card to the container
-        productContainer.appendChild(productCard);
-
-        // Add event listener to "Add to Cart" button
-        const addToCartButton = productCard.querySelector('.add-to-cart');
-        addToCartButton.addEventListener('click', () => {
-            addToCart(product);
-        });
-    });
+  cart.forEach(item => {
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+      <div class="cart-item-details">
+        <h4>${item.name}</h4>
+        <p>Price: ksh ${item.price}</p>
+        <p>Quantity: ${item.quantity}</p>
+        <button class="remove-from-cart" data-id="${item.id}">Remove</button>
+      </div>
+    `;
+    cartContainer.appendChild(cartItem);
+  });
 }
 
-// Cart functionality
-
-function updateCartUI() {
-    const cartContainer = document.querySelector('.cart-container');
-    const totalPriceElement = document.querySelector('.total-price');
-    cartContainer.innerHTML = '';
-    let totalPrice = 0;
-    
-    cart.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart-item');
-        const itemTotalPrice = item.price * item.quantity;
-        totalPrice += itemTotalPrice;
-
-        cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-            <div class="cart-item-details">
-                <h4>${item.name}</h4>
-                <p>Quantity: ${item.quantity}</p>
-                <p>Ksh ${itemTotalPrice}</p>
-                <button class="remove-item" data-id="${item.id}">Remove</button>
-            </div>
-        `;
-        cartContainer.appendChild(cartItem);
-
-        // Add event listener to remove button
-        cartItem.querySelector('.remove-item').addEventListener('click', () => {
-            removeFromCart(item.id);
-        });
-    });
-
-    // Update total price display
-    totalPriceElement.innerHTML = `Total: Ksh ${totalPrice}`;
-
-    // Enable or disable checkout button based on cart content
-    const checkoutButton = document.querySelector('.checkout-btn');
-    checkoutButton.disabled = cart.length === 0;
+// Add item to cart
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (product) {
+    const existingProduct = cart.find(item => item.id === productId);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    updateCart();
+  }
 }
 
-// Checkout form submission (just an example, you can use an API or integrate payment gateway here)
-document.querySelector('.checkout-btn').addEventListener('click', () => {
-    const userDetails = {
-        name: document.querySelector('#name').value,
-        email: document.querySelector('#email').value,
-        phone: document.querySelector('#phone').value,
-    };
+// Remove item from cart
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  updateCart();
+}
 
-    // Simulate sending the order
-    alert(`Order placed! Name: ${userDetails.name}, Total: Ksh ${calculateTotal()}`);
-    cart = []; // Clear cart after checkout
-    localStorage.setItem('cart', JSON.stringify(cart)); // Update cart in localStorage
-    updateCartUI();
+// Initialize event listeners for add to cart buttons
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', (event) => {
+    const productId = parseInt(event.target.closest('.product-details').getAttribute('data-id'));
+    addToCart(productId);
+  });
 });
 
-function calculateTotal() {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-}
+// Event listener for remove from cart
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('remove-from-cart')) {
+    const productId = parseInt(event.target.getAttribute('data-id'));
+    removeFromCart(productId);
+  }
+});
 
+// Initialize cart
+updateCart();
