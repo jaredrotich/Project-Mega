@@ -195,6 +195,7 @@ footer {
 /* Ensure the footer does not overlap content in small screens */
 footer p {
     margin: 0;
+    padding-bottom: 80px;
 }
 
 /* Media Queries for Responsiveness */
