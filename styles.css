@@ -432,7 +432,7 @@
   }
   input:focus {
     outline: none;
-  
+  }
   .small-img-row {
     display: flex;
     justify-content: space-between;
