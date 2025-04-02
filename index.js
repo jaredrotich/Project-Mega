@@ -1,47 +1,41 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const cart = []; // Initialize the cart array
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotalElement = document.getElementById("cart-total");
+document.addEventListener("DOMContentLoaded", function() {
+    let cart = [];
+    const cartCount = document.getElementById("cart-count");
 
-    const updateCart = () => {
-        // Clear existing cart items
-        cartItemsContainer.innerHTML = "";
-        
-        // Calculate total price
-        let total = 0;
+    function updateCartCount() {
+        cartCount.innerText = cart.length;
+    }
 
-        cart.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `${item.name} - Ksh ${item.price}`;
-            cartItemsContainer.appendChild(li);
-            total += item.price; // Sum up product prices
-        });
-
-        cartTotalElement.textContent = total; // Update cart total display
-    };
-
-    const categoriesContainer = document.querySelector('.categories');
-    if (categoriesContainer) {
-        categoriesContainer.addEventListener('click', function (event) {
-            if (event.target.classList.contains('add-to-cart')) {
-                const productElement = event.target.closest('.col-3');
-                if (productElement) {
-                    // Extract information 
-                    const productId = productElement.dataset.id;
-                    const productName = productElement.querySelector('h3').textContent; // Get name from the h3 tag
-                    const productPrice = parseInt(productElement.dataset.price, 10);
-
-                    if (!isNaN(productPrice)) {
-                        // Add to cart
-                        cart.push({ id: productId, name: productName, price: productPrice });
-                        updateCart();
-                    } else {
-                        console.error("Invalid product price:", productElement.dataset.price);
-                    }
+    function addToCart(productId) {
+        fetch("products.json")
+            .then(response => response.json())
+            .then(data => {
+                const product = data.products.find(p => p.id === productId);
+                if (product) {
+                    cart.push(product);
+                    updateCartCount();
+                    alert(${productName} added to cart!);
                 }
-            }
-        });
-    } else {
-        console.warn("Categories container not found.");
+            });
+    }
+
+    if (document.getElementById("content").dataset.page === "products") {
+        fetch("products.json")
+            .then(response => response.json())
+            .then(data => {
+                let content = "<h3>Products</h3>";
+                data.products.forEach(product => {
+                    content += `
+                        <div class='product'>
+                            <h3>${product.name}</h3>
+                            <p>${product.price}</p>
+                            <button onclick='addToCart(${product.id})'>Add to Cart</button>
+                            <a href='product.html?id=${product.id}'>View Details</a>
+                        </div>
+                    `;
+                });
+                document.getElementById("content").innerHTML = content;
+            });
     }
 });
+
