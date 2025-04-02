@@ -1,44 +1,47 @@
-// cart.js
-let cart = []; // Array to hold cart items
-
-// Function to update the cart display
-function updateCart() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartTotalDisplay = document.getElementById('cart-total');
-
-    cartItemsContainer.innerHTML = ''; // Clear current cart display
-    let total = 0; // Initialize total amount
-
-    // Loop through the items in the cart to generate the display
-    cart.forEach(item => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${item.name}: Ksh ${item.price}`;
-        cartItemsContainer.appendChild(listItem);
-        total += item.price; // Calculate total price
-    });
-
-    cartTotalDisplay.textContent = total; // Update total in the display
-}
-
-// Event listener for the DOMContentLoaded event
 document.addEventListener("DOMContentLoaded", function () {
-    // Add event listener for "Add to Cart" buttons using event delegation
-    document.querySelector('.categories').addEventListener('click', function (event) {
-        if (event.target.classList.contains('add-to-cart')) {
-            const productElement = event.target.closest('.col-3'); // Get the closest product card
-            const productId = productElement.dataset.id;
-            const productName = productElement.dataset.name;
-            const productPrice = parseInt(productElement.dataset.price, 10); // Convert price to integer
+    const cart = []; // Initialize the cart array
+    const cartItemsContainer = document.getElementById("cart-items");
+    const cartTotalElement = document.getElementById("cart-total");
 
-            // Create product object and add it to the cart
-            const product = {
-                id: productId,
-                name: productName,
-                price: productPrice,
-            };
+    const updateCart = () => {
+        // Clear existing cart items
+        cartItemsContainer.innerHTML = "";
+        
+        // Calculate total price
+        let total = 0;
 
-            cart.push(product); // Push the product into the cart
-            updateCart(); // Update the cart display
-        }
-    });
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name} - Ksh ${item.price}`;
+            cartItemsContainer.appendChild(li);
+            total += item.price; // Sum up product prices
+        });
+
+        cartTotalElement.textContent = total; // Update cart total display
+    };
+
+    const categoriesContainer = document.querySelector('.categories');
+    if (categoriesContainer) {
+        categoriesContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('add-to-cart')) {
+                const productElement = event.target.closest('.col-3');
+                if (productElement) {
+                    // Extract information 
+                    const productId = productElement.dataset.id;
+                    const productName = productElement.querySelector('h3').textContent; // Get name from the h3 tag
+                    const productPrice = parseInt(productElement.dataset.price, 10);
+
+                    if (!isNaN(productPrice)) {
+                        // Add to cart
+                        cart.push({ id: productId, name: productName, price: productPrice });
+                        updateCart();
+                    } else {
+                        console.error("Invalid product price:", productElement.dataset.price);
+                    }
+                }
+            }
+        });
+    } else {
+        console.warn("Categories container not found.");
+    }
 });
