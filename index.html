@@ -29,12 +29,35 @@
                         <li><a href="#products">Products</a></li>
                         <li><a href="#contact us">Contact Us</a></li>
                         <li><a href="#about_us">About Us</a></li>
-                        <li><a href="#cart">Cart</a></li>
-                       
-                      </ul>  
+            
+                    </ul>  
                 </nav>
+          
+               <!-- Cart Icon -->
+            <div class="cart-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span class="cart-icon-count" id="cart-count">0</span>
+          </div>
+      </div>
+      
+      
+          
+          <!-- Cart Items List -->
+          <ul id="cart-items"></ul>
+          
+          <!-- Cart Footer -->
+          <div class="cart-footer">
+              <div class="cart-total">
+                  <p>Total: <span id="cart-total">0</span> Ksh</p>
+              </div>
+              <button class="btn checkout-btn">Proceed to Checkout</button>
+          </div>
+      </div>
 
-               
             </div>
             <div class="row">
              <div class="home">
@@ -52,14 +75,7 @@
         </div>
       </div>
 
-      <div class="cart">
-        <h3>Shopping Cart</h3>
-        <p>Items in cart: <span id="cart-count">0</span></p>
-        <ul id="cart-items"></ul>
-        <p>Total: <span id="cart-total">0</span> Ksh</p>
-    </div>
-    <span id="cart-count">0</span>
-
+      
       <!---------------Categories--------------->
 
     <div class="categories">
@@ -73,6 +89,11 @@
               <h4>SMART PHONES</h4>
               <img src="https://saruk.co.ke/_next/image?url=https%3A%2F%2Fsaruk-web-images.s3.eu-north-1.amazonaws.com%2FXiaomi%2520Redmi%2520Note%252014%2520Pro%2520Plus%25205G%2520512GB%2520ROM%252012GB%2520RAM.jpg&w=640&q=75" />
             </div>
+            <div class="Home">
+              <h4>SNEAKERS</h4>
+              <img src="https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/12/7480951/1.jpg?4848" />
+
+            </div>
           </div>
         </div>
       </div>
@@ -84,8 +105,8 @@
         <div class="card-container"></div>
         <div class="btnContainer">
           <div class="center">
-            <button id="addItems" class="btn" style="text-align: center">
-              Add Item
+            <button id="addItems" class="" style="text-align: center">
+             
             </button>
           </div>
         </div>
@@ -287,7 +308,6 @@
                 <br>
             <p>&copy; HILTECH DIGITAL, 2025 - Best TECH Partner | HILTECH !</p>
         </footer>
-
+        <script src="index.js"></script>
     </body>
-    <script src="index.js"></script>
 </html>
